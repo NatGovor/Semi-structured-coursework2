@@ -1,9 +1,10 @@
 use taxiCompany;
+db.dropDatabase();
 
 db.drivers.insert({
     firstName: 'Andrey',
     lastName: 'Newman',
-    dateOfBirth: new Date(1987, 12, 12),
+    dateOfBirth: new Date('1987-12-12'),
     address: {
         country: 'UK',
         city: 'London',
@@ -14,16 +15,19 @@ db.drivers.insert({
         telephone: '+44 020 7033 3920',
         email: 'andrey.newman@gmail.com'
     },
-    dateOfEmployment: new Date(2008, 1, 12),
-    //dateOfDismiss: new Date(2008, 1, 12), // if there is no such field then the employee is currently working
+    dateOfEmployment: new Date('2008-01-12'),
+    //dateOfDismiss: new Date('2008-01-12'), // if there is no such field then the employee is currently working
     //salary: 20000, // if there is no such field then the driver receives percentage from each ride
     percentageOfReceipt: 40, // if there is no such field then the driver receives fixed salary
-    shift: '08:00-16:00',  //'00:00-08:00' , '16:00-00:00',
+    shift: {
+		startTime: '08:00',
+		endTime: '16:00'
+	},
     cars: [
         {
             registrationNumber : '123AJOO22MLG',
             age : 3.0,
-            dateOfLastMOTTest: new Date(2017, 07, 11),
+            dateOfLastMOTTest: new Date('2017-07-11'),
             carStatus : 'roadworthy' //roadworthy, in for service, awaiting repair, written off
         }
     ]
@@ -32,7 +36,7 @@ db.drivers.insert({
 db.operators.insert({
     firstName: 'Anny',
     lastName: 'Winehouse',
-    dateOfBirth: new Date(1997, 01, 06),
+    dateOfBirth: new Date('1997-01-06'),
     address: {
         country: 'UK',
         city: 'London',
@@ -43,10 +47,13 @@ db.operators.insert({
         telephone: '+44 020 8659 3794',
         email: 'anny1997@gmail.com'
     },
-    dateOfEmployment: new Date(2016, 5, 22),
-    // dateOfDismiss: new Date(2008, 1, 12), // if there is no such field then the employee is currently working
+    dateOfEmployment: new Date('2016-05-22'),
+    // dateOfDismiss: new Date('2008-01-12'), // if there is no such field then the employee is currently working
     salary: 20000,
-    shift: '08:00-16:00'  //'From 0 to 8' , 'From 16 to 24'
+    shift: {
+		startTime: '08:00',
+		endTime: '16:00'
+	}
 });
 
 db.clients.insert({
@@ -60,11 +67,11 @@ db.clients.insert({
 db.regularBookings.insert({
     clientId: '+44 020 8659 3794',
     regularType: 'once a week', // daily bookings
-    subscriptionStartDate: new Date(2017, 9, 31),
-    subscriptionEndDate: new Date(2018, 9, 31),
+    subscriptionStartDate: new Date('2017-09-30'),
+    subscriptionEndDate: new Date('2018-09-30'),
     departurePoint: 'Heathrow Airport Terminal 3',
     destinationPoint: 'The Royal London Hospital',
-    lastArrivalDateTime: new Date(2017, 9, 31, 15, 30, 0)
+    lastArrivalDateTime: new Date('2017-09-30T15:30:00Z')
 });
 
 var driver = db.drivers.findOne();
@@ -81,18 +88,18 @@ db.bookings.insert({
 	},
     operatorId: operator._id,
     clientId: client._id,
-    dateTime: new Date(2017, 9, 31, 15, 30, 0),
+    dateTime: new Date('2017-09-30T15:30:00Z'),
     departurePoint: 'Heathrow Airport Terminal 3',
     destinationPoint: 'The Royal London Hospital',
     regularBookingId: regularBooking._id, // optional field. If do not have, that is not regular booking
     amount: 120,
-    dateOfPayment: new Date(2017, 9, 31), // if there is no dateOfPayment then it has not been paid yet
+    dateOfPayment: new Date('2017-09-30'), // if there is no dateOfPayment then it has not been paid yet
 });
 
 db.revenue.insert({
     driverId: driver._id,
-    startDate: new Date(2017, 9, 2),
-    endDate: new Date(2017, 9, 31),
+    startDate: new Date('2017-09-01'),
+    endDate: new Date('2017-09-30'),
     driverWage: 48,
     companyWage: 72
 });
