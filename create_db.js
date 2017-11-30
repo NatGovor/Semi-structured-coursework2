@@ -26,7 +26,7 @@ db.drivers.insert({
     cars: [
         {
             registrationNumber : '123AJOO22MLG',
-            age : 3.0,
+            age : 3,
             dateOfLastMOTTest: new Date('2017-07-11'),
             carStatus : 'roadworthy' //roadworthy, in for service, awaiting repair, written off
         }
@@ -60,7 +60,7 @@ db.clients.insert({
     _id: '+44 020 8659 9094',
     firstName: 'Jack',
     lastName: 'Theripper',
-    clientType: 'private', // corporate
+    clientType: 'corporate', // private
     email: 'jacktheripper@gmail.com'
 });
 
@@ -71,7 +71,7 @@ db.regularBookings.insert({
     subscriptionEndDate: new Date('2018-09-30'),
     departurePoint: 'Heathrow Airport Terminal 3',
     destinationPoint: 'The Royal London Hospital',
-    lastArrivalDateTime: new Date('2017-09-30T15:30:00Z')
+    lastArrivalDateTime: new Date('2017-11-25T15:30:00Z')
 });
 
 var driver = db.drivers.findOne();
@@ -81,16 +81,16 @@ var regularBooking = db.regularBookings.findOne();
 
 db.bookings.insert({
     driver: {
+		driverId: driver._id,
 		// salary: driver.salary, // presense of the field depends on the driver rate type
 		percentageOfReceipt: driver.percentageOfReceipt, // presense of the field depends on the driver rate type
-		driverId: driver._id,
 		carRegistrationNumber: driver.cars[0].registrationNumber
 	},
     operatorId: operator._id,
     clientId: client._id,
     dateTime: new Date('2017-09-30T15:30:00Z'),
-    departurePoint: 'Heathrow Airport Terminal 3',
-    destinationPoint: 'The Royal London Hospital',
+    departurePoint: regularBooking.departurePoint,
+    destinationPoint: regularBooking.destinationPoint,
     regularBookingId: regularBooking._id, // optional field. If do not have, that is not regular booking
     amount: 120,
     dateOfPayment: new Date('2017-09-30'), // if there is no dateOfPayment then it has not been paid yet
