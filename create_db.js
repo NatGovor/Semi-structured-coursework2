@@ -1,4 +1,7 @@
-use taxiCompany;
+conn = new Mongo();
+db = conn.getDB('taxiCompany');
+
+// drop the previous database with the same name if exists
 db.dropDatabase();
 
 db.drivers.insert({

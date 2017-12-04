@@ -1,3 +1,6 @@
+conn = new Mongo();
+db = conn.getDB('taxiCompany');
+
 // Insert drivers
 db.drivers.insert([
 	{
