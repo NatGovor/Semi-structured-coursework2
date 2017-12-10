@@ -901,3 +901,83 @@ db.bookings.insert([
 		dateOfPayment: new Date('2017-11-18')
 	}
 ]);
+
+db.revenue.insert([
+    {
+    "driverId" : drivers[2]._id,
+    "startDate" : ISODate("2017-09-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-09-30T00:00:00.000Z"),
+    "driverWage" : 160.0,
+    "companyWage" : 240.0
+	},
+	{
+    "driverId" : drivers[3]._id,
+    "startDate" : ISODate("2017-09-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-09-30T00:00:00.000Z"),
+    "driverWage" : 160.0,
+    "companyWage" : 240.0
+	},
+	{
+    "driverId" : drivers[4]._id,
+    "startDate" : ISODate("2017-09-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-09-30T00:00:00.000Z"),
+    "driverWage" : 164.0,
+    "companyWage" : 246.0
+	},
+	{
+    "driverId" : drivers[5]._id,
+    "startDate" : ISODate("2017-09-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-09-30T00:00:00.000Z"),
+    "driverWage" : 48.0,
+    "companyWage" : 72.0
+	},
+    {
+    "driverId" : drivers[2]._id,
+    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-08-31T00:00:00.000Z"),
+    "driverWage" : 160.0,
+    "companyWage" : 240.0
+	},
+	{
+    "driverId" : drivers[3]._id,
+    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-08-31T00:00:00.000Z"),
+    "driverWage" : 160.0,
+    "companyWage" : 240.0
+	},
+	{
+    "driverId" : drivers[4]._id,
+    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-08-31T00:00:00.000Z"),
+    "driverWage" : 164.0,
+    "companyWage" : 246.0
+	},
+	{
+    "driverId" : drivers[5]._id,
+    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-08-31T00:00:00.000Z"),
+    "driverWage" : 48.0,
+    "companyWage" : 72.0
+	},
+    {
+    "driverId" : drivers[2]._id,
+    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-08-30T00:00:00.000Z"),
+    "driverWage" : 160.0,
+    "companyWage" : 240.0
+	},
+	{
+    "driverId" : drivers[3]._id,
+    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-08-30T00:00:00.000Z"),
+    "driverWage" : 160.0,
+    "companyWage" : 240.0
+	},
+	{
+    "driverId" : drivers[4]._id,
+    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-08-30T00:00:00.000Z"),
+    "driverWage" : 164.0,
+    "companyWage" : 246.0
+	}
+]);
