@@ -980,4 +980,19 @@ db.revenue.insert([
     "driverWage" : 164.0,
     "companyWage" : 246.0
 	}
+	,
+	{
+    "driverId" : drivers[2]._id,
+    "startDate" : ISODate("2017-11-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-11-30T00:00:00.000Z"),
+    "driverWage" : 160.0,
+    "companyWage" : 240.0
+	},
+	{
+    "driverId" : drivers[3]._id,
+    "startDate" : ISODate("2017-11-01T00:00:00.000Z"),
+    "endDate" : ISODate("2017-11-30T00:00:00.000Z"),
+    "driverWage" : 16.0,
+    "companyWage" : 24.0
+	}
 ]);
