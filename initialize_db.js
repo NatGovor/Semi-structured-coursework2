@@ -51,7 +51,7 @@ db.drivers.insert([
 		percentageOfReceipt: 40,
 		shift: {
 			startTime: '16:00',
-			endTime: '00:00'
+			endTime: '24:00'
 		},
 		cars: [
 			{
@@ -85,8 +85,8 @@ db.drivers.insert([
 		dateOfEmployment: new Date('2016-05-02'),
 		percentageOfReceipt: 40,
 		shift: {
-			startTime: '00:00',
-			endTime: '08:00'
+			startTime: '08:00',
+			endTime: '16:00'
 		},
 		cars: [
 			{
@@ -185,7 +185,7 @@ db.drivers.insert([
 		percentageOfReceipt: 35,
 		shift: {
 			startTime: '16:00',
-			endTime: '00:00'
+			endTime: '24:00'
 		},
 		cars: [
 			{
@@ -214,7 +214,7 @@ db.drivers.insert([
 		salary: 22000,
 		shift: {
 			startTime: '16:00',
-			endTime: '00:00'
+			endTime: '24:00'
 		},
 		cars: [
 			{
@@ -250,7 +250,7 @@ db.drivers.insert([
 				registrationNumber : '683ANMO38TNP',
 				age : 2,
 				dateOfLastMOTTest: new Date('2015-08-10'),
-				carStatus : 'roadworty'
+				carStatus : 'roadworthy'
 			}
 		]
 	}
@@ -323,7 +323,7 @@ db.operators.insert([
 		salary: 12000,
 		shift: {
 			startTime: '16:00',
-			endTime: '00:00'
+			endTime: '24:00'
 		}
 	},
 	/*5*/
@@ -367,7 +367,7 @@ db.operators.insert([
 		salary: 10500,
 		shift: {
 			startTime: '16:00',
-			endTime: '00:00'
+			endTime: '24:00'
 		}
 	},
 	/*7*/
@@ -411,7 +411,7 @@ db.operators.insert([
 		salary: 12000,
 		shift: {
 			startTime: '16:00',
-			endTime: '00:00'
+			endTime: '24:00'
 		}
 	},
 	// Dismissed operator
@@ -434,7 +434,7 @@ db.operators.insert([
 		salary: 15000,
 		shift: {
 			startTime: '16:00',
-			endTime: '00:00'
+			endTime: '24:00'
 		}
 	}
 ]);
