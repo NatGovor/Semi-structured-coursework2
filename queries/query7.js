@@ -1,19 +1,21 @@
 // first method
+// set the necessary date interval
 db.bookings.find({
     'dateTime': {
-        $gte: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()), 
-        $lte: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 23, 59, 59)
+        $gte: ISODate("2017-11-01T00:00:00.000Z"), 
+        $lte: ISODate("2017-11-01T23:59:59.000Z")
         }
-}).count()
+}).count();
 
 // second method
+// set the necessary date interval
 db.bookings.aggregate(
   [
     {
       $match: {
         'dateTime': {
-            $gte: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()), 
-            $lte: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 23, 59, 59)
+            $gte: ISODate("2017-11-01T00:00:00.000Z"), 
+            $lte: ISODate("2017-11-01T23:59:59.000Z")
         }
       }
     },
@@ -21,4 +23,4 @@ db.bookings.aggregate(
       $count: "todayBookingCount"
     }
   ]
-)
+);
