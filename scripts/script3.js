@@ -1,4 +1,4 @@
-db.bookings.aggregate(
+db.getCollection('bookings').aggregate(
    [
      {
        $group:
@@ -7,7 +7,7 @@ db.bookings.aggregate(
            totalProfit: { $sum: '$amount' },
          }
      },
-     {$sort: {'totalProfit': -1} },
-     {$limit: 1}
+     { $sort: {'totalProfit': -1} },
+     { $limit: 1 }
    ]
-)
+);

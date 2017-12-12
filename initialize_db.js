@@ -18,7 +18,7 @@ db.drivers.insert([
 			email: 'Nata$ha@gmail.com'
 		},
 		dateOfEmployment: new Date('2017-04-22'),
-		salary: 20000,
+		salary: 150,
 		shift: {
 			startTime: '00:00',
 			endTime: '08:00'
@@ -141,7 +141,7 @@ db.drivers.insert([
 			email: 'olddude@gmail.com'
 		},
 		dateOfEmployment: new Date('2016-01-22'),
-		salary: 18000,
+		salary: 180,
 		shift: {
 			startTime: '00:00',
 			endTime: '08:00'
@@ -211,7 +211,7 @@ db.drivers.insert([
 			email: 'fisher1980@gmail.com'
 		},
 		dateOfEmployment: new Date('2016-04-22'),
-		salary: 22000,
+		salary: 130,
 		shift: {
 			startTime: '16:00',
 			endTime: '24:00'
@@ -276,7 +276,7 @@ db.operators.insert([
 			email: 'lolly@gmail.com'
 		},
 		dateOfEmployment: new Date('2016-05-29'),
-		salary: 18500,
+		salary: 185,
 		shift: {
 			startTime: '08:00',
 			endTime: '16:00'
@@ -298,7 +298,7 @@ db.operators.insert([
 			email: 'hateful_kate@gmail.com'
 		},
 		dateOfEmployment: new Date('2017-12-27'),
-		salary: 10000,
+		salary: 100,
 		shift: {
 			startTime: '00:00',
 			endTime: '08:00'
@@ -320,7 +320,7 @@ db.operators.insert([
 			email: 'mary_waller@gmail.com'
 		},
 		dateOfEmployment: new Date('2017-02-07'),
-		salary: 12000,
+		salary: 120,
 		shift: {
 			startTime: '16:00',
 			endTime: '24:00'
@@ -342,7 +342,7 @@ db.operators.insert([
 			email: 'rosesarered@gmail.com'
 		},
 		dateOfEmployment: new Date('2014-08-02'),
-		salary: 9800,
+		salary: 98,
 		shift: {
 			startTime: '00:00',
 			endTime: '08:00'
@@ -364,7 +364,7 @@ db.operators.insert([
 			email: 'dear1996@gmail.com'
 		},
 		dateOfEmployment: new Date('2016-07-02'),
-		salary: 10500,
+		salary: 105,
 		shift: {
 			startTime: '16:00',
 			endTime: '24:00'
@@ -386,7 +386,7 @@ db.operators.insert([
 			email: 'jogny2008@gmail.com'
 		},
 		dateOfEmployment: new Date('2017-09-18'),
-		salary: 8700,
+		salary: 87,
 		shift: {
 			startTime: '08:00',
 			endTime: '16:00'
@@ -408,7 +408,7 @@ db.operators.insert([
 			email: 'tomy1997@gmail.com'
 		},
 		dateOfEmployment: new Date('2016-06-10'),
-		salary: 12000,
+		salary: 120,
 		shift: {
 			startTime: '16:00',
 			endTime: '24:00'
@@ -431,7 +431,7 @@ db.operators.insert([
 		},
 		dateOfEmployment: new Date('2015-06-12'),
 		dateOfDismiss: new Date('2017-07-03'),
-		salary: 15000,
+		salary: 150,
 		shift: {
 			startTime: '16:00',
 			endTime: '24:00'
@@ -532,7 +532,7 @@ var clients = db.clients.find();
 var jackTheRipper = db.clients.findOne({lastName: 'Theripper'});
 var jamesBond = db.clients.findOne({lastName: 'Bond'});
 
-// Insert regular bookings for James Bond
+// Insert regular booking for James Bond
 db.regularBookings.insert([
 	{
 		clientId: jamesBond._id,
@@ -820,11 +820,70 @@ db.bookings.insert([
 		},
 		operatorId: operators[1]._id,
 		clientId: clients[11]._id,
-		dateTime: new Date('2017-09-01T08:30:00Z'),
+		dateTime: new Date('2017-10-02T08:30:00Z'),
 		departurePoint: 'Private drive 10',
 		destinationPoint: 'Kings Cross Station',
 		amount: 65,
 		dateOfPayment: new Date('2017-09-01')
+	},
+	{
+		driver: {
+			driverId: drivers[0]._id,
+			percentageOfReceipt: drivers[0].percentageOfReceipt,
+			carRegistrationNumber: drivers[0].cars[0].registrationNumber
+		},
+		operatorId: operators[1]._id,
+		clientId: clients[10]._id,
+		dateTime: new Date('2017-10-10T10:30:00Z'),
+		departurePoint: 'Somerset house',
+		destinationPoint: 'St Pancras Station',
+		amount: 50,
+		dateOfPayment: new Date('2017-10-10')
+	}
+]);
+
+// Second part of the day booking (shift 16:00-24:00)
+db.bookings.insert([
+	{
+		driver: {
+			driverId: drivers[2]._id,
+			percentageOfReceipt: drivers[2].percentageOfReceipt,
+			carRegistrationNumber: drivers[2].cars[1].registrationNumber
+		},
+		operatorId: operators[3]._id,
+		clientId: clients[7]._id,
+		dateTime: new Date('2017-10-01T18:30:00Z'),
+		departurePoint: 'Ritz Hotel',
+		destinationPoint: 'Royal Opera House',
+		amount: 40,
+		dateOfPayment: new Date('2017-10-01')
+	},
+	{
+		driver: {
+			driverId: drivers[7]._id,
+			percentageOfReceipt: drivers[7].percentageOfReceipt,
+			carRegistrationNumber: drivers[7].cars[0].registrationNumber
+		},
+		operatorId: operators[7]._id,
+		clientId: clients[9]._id,
+		dateTime: new Date('2017-11-20T20:00:00Z'),
+		departurePoint: 'Genesis Cinema',
+		destinationPoint: 'Roman Road 13',
+		amount: 15
+	},
+	{
+		driver: {
+			driverId: drivers[6]._id,
+			percentageOfReceipt: drivers[6].percentageOfReceipt,
+			carRegistrationNumber: drivers[6].cars[0].registrationNumber
+		},
+		operatorId: operators[5]._id,
+		clientId: clients[8]._id,
+		dateTime: new Date('2017-11-25T19:15:00Z'),
+		departurePoint: 'Camden Town',
+		destinationPoint: 'Wimbledon 10',
+		amount: 85,
+		dateOfPayment: new Date('2017-11-25')
 	}
 ]);
 
@@ -899,100 +958,102 @@ db.bookings.insert([
 		destinationPoint: 'Noname street, 17',
 		amount: 60,
 		dateOfPayment: new Date('2017-11-18')
+	},
+	{
+		driver: {
+			driverId: drivers[1]._id,
+			percentageOfReceipt: drivers[1].percentageOfReceipt,
+			carRegistrationNumber: drivers[1].cars[0].registrationNumber
+		},
+		operatorId: operators[2]._id,
+		clientId: clients[1]._id,
+		dateTime: new Date('2017-10-09T02:10:00Z'),
+		departurePoint: 'Picadilly Institute',
+		destinationPoint: 'Mile End Road, 210',
+		amount: 90,
+		dateOfPayment: new Date('2017-10-09')
 	}
 ]);
 
+// Insert revenue according to the bookings above
 db.revenue.insert([
-    {
-    "driverId" : drivers[2]._id,
-    "startDate" : ISODate("2017-09-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-09-30T00:00:00.000Z"),
-    "driverWage" : 160.0,
-    "companyWage" : 240.0
+	// October
+	{
+		driverId : drivers[0]._id,
+		startDate : ISODate("2017-10-01T00:00:00.000Z"),
+		endDate : ISODate("2017-10-31T00:00:00.000Z"),
+		driverWage : 161.2,
+		companyWage : 241.8
 	},
 	{
-    "driverId" : drivers[3]._id,
-    "startDate" : ISODate("2017-09-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-09-30T00:00:00.000Z"),
-    "driverWage" : 160.0,
-    "companyWage" : 240.0
+		driverId : drivers[1]._id,
+		startDate : ISODate("2017-10-01T00:00:00.000Z"),
+		endDate : ISODate("2017-10-31T00:00:00.000Z"),
+		driverWage : 150,
+		companyWage : 22
 	},
 	{
-    "driverId" : drivers[4]._id,
-    "startDate" : ISODate("2017-09-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-09-30T00:00:00.000Z"),
-    "driverWage" : 164.0,
-    "companyWage" : 246.0
+		driverId : drivers[2]._id,
+		startDate : ISODate("2017-10-01T00:00:00.000Z"),
+		endDate : ISODate("2017-10-31T00:00:00.000Z"),
+		driverWage : 16,
+		companyWage : 24
 	},
 	{
-    "driverId" : drivers[5]._id,
-    "startDate" : ISODate("2017-09-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-09-30T00:00:00.000Z"),
-    "driverWage" : 48.0,
-    "companyWage" : 72.0
-	},
-    {
-    "driverId" : drivers[2]._id,
-    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-08-31T00:00:00.000Z"),
-    "driverWage" : 160.0,
-    "companyWage" : 240.0
+		driverId : drivers[3]._id,
+		startDate : ISODate("2017-10-01T00:00:00.000Z"),
+		endDate : ISODate("2017-10-31T00:00:00.000Z"),
+		driverWage : 64.8,
+		companyWage : 97.2
 	},
 	{
-    "driverId" : drivers[3]._id,
-    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-08-31T00:00:00.000Z"),
-    "driverWage" : 160.0,
-    "companyWage" : 240.0
+		driverId : drivers[4]._id,
+		startDate : ISODate("2017-10-01T00:00:00.000Z"),
+		endDate : ISODate("2017-10-31T00:00:00.000Z"),
+		driverWage : 16.7,
+		companyWage : 150.3
+	},
+	// November
+	{
+		driverId : drivers[0]._id,
+		startDate : ISODate("2017-11-01T00:00:00.000Z"),
+		endDate : ISODate("2017-11-30T00:00:00.000Z"),
+		driverWage : 66,
+		companyWage : 99
 	},
 	{
-    "driverId" : drivers[4]._id,
-    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-08-31T00:00:00.000Z"),
-    "driverWage" : 164.0,
-    "companyWage" : 246.0
+		driverId : drivers[1]._id,
+		startDate : ISODate("2017-11-01T00:00:00.000Z"),
+		endDate : ISODate("2017-11-30T00:00:00.000Z"),
+		driverWage : 150,
+		companyWage : 0
 	},
 	{
-    "driverId" : drivers[5]._id,
-    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-08-31T00:00:00.000Z"),
-    "driverWage" : 48.0,
-    "companyWage" : 72.0
-	},
-    {
-    "driverId" : drivers[2]._id,
-    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-08-30T00:00:00.000Z"),
-    "driverWage" : 160.0,
-    "companyWage" : 240.0
+		driverId : drivers[3]._id,
+		startDate : ISODate("2017-11-01T00:00:00.000Z"),
+		endDate : ISODate("2017-11-30T00:00:00.000Z"),
+		driverWage : 147.6,
+		companyWage : 221.4
 	},
 	{
-    "driverId" : drivers[3]._id,
-    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-08-30T00:00:00.000Z"),
-    "driverWage" : 160.0,
-    "companyWage" : 240.0
+		driverId : drivers[4]._id,
+		startDate : ISODate("2017-11-01T00:00:00.000Z"),
+		endDate : ISODate("2017-11-30T00:00:00.000Z"),
+		driverWage : 12.1,
+		companyWage : 108.9
 	},
 	{
-    "driverId" : drivers[4]._id,
-    "startDate" : ISODate("2017-08-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-08-30T00:00:00.000Z"),
-    "driverWage" : 164.0,
-    "companyWage" : 246.0
-	}
-	,
-	{
-    "driverId" : drivers[2]._id,
-    "startDate" : ISODate("2017-11-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-11-30T00:00:00.000Z"),
-    "driverWage" : 160.0,
-    "companyWage" : 240.0
+		driverId : drivers[6]._id,
+		startDate : ISODate("2017-11-01T00:00:00.000Z"),
+		endDate : ISODate("2017-11-30T00:00:00.000Z"),
+		driverWage : 29.75,
+		companyWage : 55.25
 	},
 	{
-    "driverId" : drivers[3]._id,
-    "startDate" : ISODate("2017-11-01T00:00:00.000Z"),
-    "endDate" : ISODate("2017-11-30T00:00:00.000Z"),
-    "driverWage" : 16.0,
-    "companyWage" : 24.0
+		driverId : drivers[8]._id,
+		startDate : ISODate("2017-11-01T00:00:00.000Z"),
+		endDate : ISODate("2017-11-30T00:00:00.000Z"),
+		driverWage : 31.5,
+		companyWage : 58.5
 	}
 ]);
