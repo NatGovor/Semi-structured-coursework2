@@ -1,36 +1,51 @@
-// unpaid amount per driver last month
-var lastMonthRevenue = db.bookings.aggregate(
-   [
-      {
-         $match:
-            {
-              'dateOfPayment': {
-                  $gte: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1, 0 , 0, 0),
-                  $lte: new Date(new Date().getFullYear(), new Date().getMonth(), 0, 23, 59, 59)
-              },
-            }
-      },
-     {
-       $group:
-         {
-           _id: {driver: '$driver'},
-           payAmount: { $sum: '$amount' },
-          // payAmount: { $multiply: [ $sum: '$amount', '$driver.percentageOfReceipt' / 100 ] } ,
+var monthStart = "2017-12-01T00:00:00.000Z";
+var monthEnd = "2017-12-31T00:00:00.000Z";
 
-        }
-     }
-   ]
-)
+var revenueForMonth = db.revenue.find({
+    'startDate': ISODate(monthStart),
+    'endDate': ISODate(monthEnd),
+});
 
-var lastMonthRevenueExist = db.getCollection('revenue').find({
-  'startDate': {$gte: new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1, 0 , 0, 0)},
-  'endDate': {$lte: new Date(new Date().getFullYear(), new Date().getMonth(), 0, 23, 59, 59)},
-}).count();
-
-if(lastMonthRevenueExist) {
-  db.revenue.insert({
-
-  })
+// no revenue for specified month found
+if (revenueForMonth.length === 0) {
+	var drivers = db.drivers.find({});
+	for (var i = 0; i < drivers.length; i++) {
+		var incomeFromDriver = db.getCollection('bookings').aggregate([
+			{
+				$match: {
+					'driver.driverId': drivers[i]._id,
+					'dateTime': {
+						$gte: ISODate(monthStart),
+						$lte: ISODate(monthEnd)
+					}
+				}
+			},
+			{
+				$group: {
+					'_id': { driverId: '$driver.driverId' },
+					'amountOfDriverBookings': { $sum: '$amount' }
+				}
+			}  
+		]);
+		
+		var driverWage = 0;
+		var companyWage = 0;
+		
+		if (drivers[i].percentageOfReceipt) {
+			driverWage = incomeFromDriver.amountOfDriverBookings * 0.4;
+		} else {
+			driverWage = drivers[i].salary;
+		}
+		companyWage = incomeFromDriver.amountOfDriverBookings - driverWage;
+		
+		db.revenue.insert({
+			driverId : drivers[i]._id,
+			startDate : ISODate(monthStart),
+			endDate : ISODate(monthEnd),
+			driverWage : driverWage,
+			companyWage : companyWage
+		});
+	}
 }
 
 

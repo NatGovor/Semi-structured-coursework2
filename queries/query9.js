@@ -1,4 +1,4 @@
-db.getCollection('bookings').aggregate(
+db.bookings.aggregate(
    [
      {
        $group:
