@@ -1,4 +1,4 @@
-// want to fire driver 8
+// Update example if we want to fire driver 8
 var driver8 = db.drivers.find({})[8];
 
 db.drivers.update({_id: driver8._id}, {$set: {dateOfDismiss: new Date()}});

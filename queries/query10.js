@@ -1,3 +1,5 @@
+//how much money the specified driver earn for the company
+
 // drivers id and dates period should be specified by user
 // in example we search for driver 0
 var driver0 = db.drivers.findOne();

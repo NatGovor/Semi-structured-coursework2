@@ -28,7 +28,8 @@ for (var i=0; i < 2000; i++) {
 		'departurePoint': 'Departure ' + i,
 		'destinationPoint': 'Destination ' + i,
 		'amount': getRandomInt(20, 150),
-		'dateOfPayment': date
+		'dateOfPayment': date,
+		'testBooking': true
 	});
 }
 

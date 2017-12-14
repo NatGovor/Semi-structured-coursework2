@@ -4,7 +4,7 @@ db.drivers.find({
 	'shift.endTime': {$gte: '16:15'}}
 );
 
-// find available drivers for a ride at current time
+// find available drivers for a ride at the current time
 db.drivers.find({
 	'shift.startTime': {$lte: new Date().getHours() + ':' + new Date().getMinutes()}, 
 	'shift.endTime': {$gte: new Date().getHours() + ':' + new Date().getMinutes()}

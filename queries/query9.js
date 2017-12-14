@@ -1,3 +1,4 @@
+// find the most profitable client
 db.bookings.aggregate(
    [
      {

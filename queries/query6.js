@@ -1,4 +1,5 @@
-// first method
+// how many bookings we have in the specified interval
+
 // set the necessary date interval
 db.bookings.find({
     'dateTime': {
