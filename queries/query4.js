@@ -1,4 +1,4 @@
-// hom many unpaid rides(bookings) we have?
+// how many unpaid rides(bookings) we have?
 db.bookings.find({
     'dateOfPayment': { $exists: false }
 }).count();
