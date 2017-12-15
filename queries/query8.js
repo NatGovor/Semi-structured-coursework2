@@ -3,7 +3,7 @@ db.revenue.aggregate([
     {
         $group: {
             '_id': null,
-            'totalDriversMonthRevenue': { $sum: '$companyWage' },
+            'totalCompanyRevenue': { $sum: '$companyWage' },
         }
     }
 ]);

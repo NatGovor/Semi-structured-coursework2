@@ -1,5 +1,5 @@
 // find regular bookings which may happen in the specified day
-// regularType is unstructured field which makes it hard to anaylize only with querry. We assume that it will be analyzed by some program or operator
+// regularType is unstructured field which makes it hard to anaylise only with querry. We assume that it will be analysed by some program or operator
 db.regularBookings.find({
     'subscriptionStartDate': { $lte: ISODate("2017-11-20T00:00:00.000Z")},
     'subscriptionEndDate': { $gte: ISODate("2017-12-11T00:00:00.000Z")}

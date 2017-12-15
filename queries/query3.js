@@ -4,7 +4,8 @@ db.drivers.find({
     'cars.dateOfLastMOTTest': {"$lte": new Date(new Date().setDate(new Date().getDate() - 330))}
  });
  
- // display only driver's id and cars
+ // The second variant. Display only driver Ids and cars for this query 
+ // (remove distracting driver's information which is not important in this case).
  db.drivers.find({
     'cars.dateOfLastMOTTest': {"$lte": new Date(new Date().setDate(new Date().getDate() - 330))}
  }, {"_id": 1, "cars": 1});

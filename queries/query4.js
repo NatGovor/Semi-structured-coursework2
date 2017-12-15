@@ -8,7 +8,7 @@ db.bookings.find({
     'dateOfPayment': { $exists: false }
 });
 
-// how much money should we recieve from unpaid bookings?
+// how much money should we receive from unpaid bookings?
 db.bookings.aggregate(
     { 
         $match: {'dateOfPayment': { $exists: false }}
